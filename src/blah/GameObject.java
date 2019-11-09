@@ -2,7 +2,7 @@ package blah;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 /**
- * This made programming everything else so easy. 
+ * This made programming everything else soo easy. 
  * This class contains some awesome methods dealing with
  * basic movement and positioning. This also handles dead. 
  * 
