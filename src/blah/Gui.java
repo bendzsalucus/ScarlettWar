@@ -1,6 +1,7 @@
 package blah;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 //import java.awt.event.ActionEvent;
 //import java.awt.event.ActionListener;
@@ -27,6 +28,7 @@ public class Gui {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
 				frame2.setSize(windowSize);
+				frame2.add(new GuiComponenet());
 				frame2.setTitle("Map");
 				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame2.setVisible(true);

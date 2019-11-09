@@ -1,5 +1,6 @@
 package blah;
-import BattleNode;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Edge {
 
@@ -11,14 +12,12 @@ public class Edge {
 		this.cost=cost;
 		this.connectionOne=endOne;
 		this.connectionTwo=endTwo;
-		connectionOne.addEdge(this);
-		connectionTwo.addEdge(this);
+
 	}
 	
 	public void updateCost(int newCost) {
 		this.cost=newCost;
-		connectionOne.addEdge(this);
-		connectionTwo.addEdge(this);
+
 	}
 	
 	public BattleNode getNextNode(BattleNode currentNode) {
@@ -30,5 +29,12 @@ public class Edge {
 	}
 	public double getCost() {
 		return this.cost;
+	}
+
+	public void printName() {
+		System.out.println("edge");
+		System.out.println(connectionOne.battleName);
+		System.out.println(connectionTwo.battleName);
+		System.out.println(cost);
 	}
 }

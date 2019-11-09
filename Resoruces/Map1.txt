@@ -1,14 +1,28 @@
 nameofBattle Gettysburg
 battleDescription War in Pennslyvania where people died
 soldierCount 69
-position 100 100 30 30
+position 500 800 30 30
 side 1
 imgpath Resources//img.jpg
 nextBattle
-nameofBattle Richmond
+nameofBattle Anitediem
 battleDescription War in Virginia where people died
 soldierCount 87
-position 200 200 20 20
+position 700 500 20 20
+side 0
+imgpath Resources//img.jpg
+nextBattle
+nameofBattle Shiloh
+battleDescription War in Virginia where people died
+soldierCount 87
+position 300 500 20 20
+side 0
+imgpath Resources//img.jpg
+nextBattle
+nameofBattle BullRun
+battleDescription War in Virginia where people died
+soldierCount 87
+position 500 300 30 30
 side 0
 imgpath Resources//img.jpg
 end

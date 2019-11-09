@@ -29,11 +29,13 @@ public class NodeImporter {
 	private boolean isUnion;
 	private Color color;
 	private ArrayList<BattleNode> battles;
+	private ArrayList<Edge> edges;
 
 	public NodeImporter(int mapNummy) {
 		battles = new ArrayList<BattleNode>();
 		mapNum = mapNummy;
-		readFile();
+		readBattle();
+		readEdge();
 
 	}
 
@@ -42,7 +44,7 @@ public class NodeImporter {
 	 * arguement is made.
 	 */
 
-	private void readFile() {
+	private void readBattle() {
 
 		Scanner scanner;
 		String scanString = ("Resoruces//Map" + this.mapNum + ".txt");
@@ -61,7 +63,7 @@ public class NodeImporter {
 				nameofBattle = scanner.next();
 			}
 			if (currentLine.equals("battleDescription")) {
-				battleDescription = scanner.next();
+				battleDescription = scanner.nextLine();
 			}
 			if (currentLine.equals("soldierCount")) {
 				soldierInTown = scanner.nextInt();
@@ -85,6 +87,31 @@ public class NodeImporter {
 			if (currentLine.equals("imgpath")) {
 				imgPath = scanner.next();
 			}
+
+		}
+		scanner.close();
+
+	}
+
+	private void readEdge() {
+		Scanner scanner;
+		String scanString = ("Resoruces//Edge" + this.mapNum + ".txt");
+		try {
+			scanner = new Scanner(new File(scanString));
+		} catch (FileNotFoundException e) {
+			System.out.println("EdgeFile not found");
+			return;
+		}
+		while (scanner.hasNextLine()) {
+			BattleNode tempBattle = battles.get(scanner.nextInt());
+			BattleNode tempBattleTwo = battles.get(scanner.nextInt());
+			int cost = scanner.nextInt();
+			Edge tempEdge = new Edge(tempBattle, tempBattleTwo, cost);
+			if (tempBattle.edges == null) {
+				tempBattle.edges = new ArrayList<Edge>();
+			}
+			tempBattle.edges.add(tempEdge);
+
 		}
 		scanner.close();
 
@@ -92,7 +119,7 @@ public class NodeImporter {
 
 	private void makeNewBattle() {
 		BattleNode temp = new BattleNode(x, y, width, height, nameofBattle, battleDescription, soldierInTown, imgPath,
-				isUnion, color);
+				isUnion, color, edges);
 		battles.add(temp);
 
 	}
