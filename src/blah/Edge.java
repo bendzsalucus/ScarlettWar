@@ -2,6 +2,7 @@ package blah;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+
 public class Edge {
 
 	private BattleNode connectionOne;
@@ -12,21 +13,30 @@ public class Edge {
 		this.cost=cost;
 		this.connectionOne=endOne;
 		this.connectionTwo=endTwo;
-
+//		connectionOne.addEdge(this);
+//		connectionTwo.addEdge(this);
+	}
+	
+	public Edge(BattleNode nextNode, double cost) {
+		this.connectionTwo=nextNode;
+		this.cost=cost;
 	}
 	
 	public void updateCost(int newCost) {
 		this.cost=newCost;
-
+//		connectionOne.addEdge(this, connectionTwo, newCost);
+//		connectionTwo.addEdge(this, connectionCne, newCost);
 	}
 	
 	public BattleNode getNextNode(BattleNode currentNode) {
-		if(currentNode==this.connectionOne) {
-			return connectionTwo;
-		} else {
-			return connectionOne;
-		}
+//		if(currentNode==this.connectionOne) {
+//			return connectionTwo;
+//		} else {
+//			return connectionOne;
+//		}
+	return connectionTwo;
 	}
+		
 	public double getCost() {
 		return this.cost;
 	}
