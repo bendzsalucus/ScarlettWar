@@ -139,6 +139,9 @@ public class NodeImporter {
 	public String getBackGroundPath() {
 		return this.imgPath;
 	}
+	public int getLevel() {
+		return this.mapNum;
+	}
 
 	public ArrayList<BattleNode> getBattles() {
 		return battles;

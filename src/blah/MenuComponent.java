@@ -33,8 +33,9 @@ public class MenuComponent extends JComponent {
 		super.paintComponent(g);
 		this.g2 = (Graphics2D) g;
 		// DO NOT MOVE ME
+		String imgString = ("Resoruces//load.jpg");
 
-		this.titleImage = new ImageIcon("Images//Menu.jpg");
+		this.titleImage = new ImageIcon(imgString);
 		this.titleImage.paintIcon(this, this.g2, 0, 0);
 
 		// Draws Three of the Bounds, Bottom bound best as a platform.

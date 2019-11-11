@@ -3,22 +3,29 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 /**
- * This class draws simple objects using Graphics2D.
+ * Where the magic GUI stuff happens
  * 
- * @author Curt Clifton. Created Sep 10, 2008.
+ * @author Lucus Bendzsa.
  */
 public class GuiComponenet extends JComponent {
+	private NodeImporter importer;
+
 	/*
 	 * No Javadoc is needed, because we inherit one. (Hover on paintComponent.)
 	 */
@@ -26,18 +33,39 @@ public class GuiComponenet extends JComponent {
 	protected void paintComponent(Graphics g) {
 		// Asks the superclass to do its work
 		super.paintComponent(g);
-		
 		Graphics2D graphics2 = (Graphics2D) g;
+		this.importer = new NodeImporter(1);
+
+		//DO NOT TOUCH ABOVE
+		handleBackground(g);
+		handleBattles(g);
+
+	}
+
+	private void handleBattles(Graphics g) {
 		
-		NodeImporter importer = new NodeImporter(1);
 		ArrayList<BattleNode> battles = importer.getBattles();
-		
 		battles.stream().forEach(e -> {
-			graphics2.setColor(e.color);
-			graphics2.fill(e.getBoundingBox());
-		});
-		
-		
+			g.setColor(e.color);
+			((Graphics2D) g).fill(e.getBoundingBox());
+		});		
+	}
+
+	private void handleBackground(Graphics g) {
+		String imgString = ("Resoruces//map1.jpg");
+
+		try {
+			Image background = ImageIO.read(new File(imgString));
+			g.drawImage(background, 0,0, null);
+			
+		} catch (Exception e) {
+			System.out.println("MapFile not found");
+			return;
+		}		
 	}
 
 }
+
+
+
+

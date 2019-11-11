@@ -1,0 +1,30 @@
+nextBattle
+nameofBattle TheBattleofFortSumter
+battleDescription The beginning of American Civil War when the bombardment of Fort Sumter near Charleston, South Carolina by the South Carolina militia and the return gunfire and subsequent surrender by the United States Army took place.
+soldierCount 0
+position 776 360 20 20
+side 0
+imgpath Resources//img.jpg
+end
+nextBattle
+nameofBattle Anitediem
+battleDescription War in Virginia where people died
+soldierCount 87
+position 700 500 10 10
+side 0
+imgpath Resources//img.jpg
+nextBattle
+nameofBattle Shiloh
+battleDescription War in Virginia where people died
+soldierCount 87
+position 300 500 10 10
+side 0
+imgpath Resources//img.jpg
+nextBattle
+nameofBattle BullRun
+battleDescription War in Virginia where people died
+soldierCount 87
+position 200 200 10 10
+side 0
+imgpath Resources//img.jpg
+end
