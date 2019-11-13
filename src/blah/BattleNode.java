@@ -1,7 +1,6 @@
 package blah;
 
 import java.awt.Color;
-import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -101,17 +100,6 @@ public class BattleNode extends GameObject{
 			leastList.add(this);
 			return leastList;
 		}
-
-		// if cost does not equal null or -1 meaning dead end, compare the current cost
-		// to the smallest cost recorded
-		// problem is making sure not to mess up by mixing stack cost with cost after a
-		// path
-		// might need another method to calculate and compare costs since current
-		// version only compares close costs.
-		// recusion at every level of shortest path calling getCostOfPath. Actually
-		// starts returning after hitting proper node. (bad efficincy since esstially
-		// doing same job)
-		// int getCostOfPath(target, node)
 		return null;
 	}
 

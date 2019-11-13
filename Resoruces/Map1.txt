@@ -102,11 +102,4 @@ position 600 270 15 15
 side 0
 imgpath Resources//img.jpg
 end
-nextBattle
-nameofBattle BattleofChancellorsville
-battleDescription The Battle of Chancellorsville was a major battle of the American Civil War (1861–1865), and the principal engagement of the Chancellorsville campaign. The confederates emerged victorious in the battle.
-soldierCount 4877
-position 830 140 15 15
-side 0
-imgpath Resources//img.jpg
-end
+edge 0 3 119

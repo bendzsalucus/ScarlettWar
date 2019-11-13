@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -34,6 +35,11 @@ public class MainMenu {
 	}
 
 	public MainMenu() {
+		ArrayList b = new ArrayList();
+		ArrayList a = new ArrayList();
+		a.add(1);
+		b.add(a);
+		
 		frame = new JFrame();
 		JPanel panel = new JPanel();
 		MenuComponent menuComp = new MenuComponent();

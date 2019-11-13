@@ -1,4 +1,5 @@
 package blah;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -36,19 +37,25 @@ public class GuiComponenet extends JComponent {
 		Graphics2D graphics2 = (Graphics2D) g;
 		this.importer = new NodeImporter(1);
 
-		//DO NOT TOUCH ABOVE
+		// DO NOT TOUCH ABOVE
 		handleBackground(g);
 		handleBattles(g);
 
 	}
 
 	private void handleBattles(Graphics g) {
-		
+
 		ArrayList<BattleNode> battles = importer.getBattles();
 		battles.stream().forEach(e -> {
 			g.setColor(e.color);
 			((Graphics2D) g).fill(e.getBoundingBox());
-		});		
+			g.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			if (e.battleName != null) {
+				g.setColor(Color.BLUE);
+				g.drawString(e.battleName,(int)e.getX()-100,(int) e.getY() + 30);
+			}
+		});
+
 	}
 
 	private void handleBackground(Graphics g) {
@@ -56,16 +63,12 @@ public class GuiComponenet extends JComponent {
 
 		try {
 			Image background = ImageIO.read(new File(imgString));
-			g.drawImage(background, 0,0, null);
-			
+			g.drawImage(background, 0, 0, null);
+
 		} catch (Exception e) {
 			System.out.println("MapFile not found");
 			return;
-		}		
+		}
 	}
 
 }
-
-
-
-
