@@ -5,40 +5,35 @@ soldierCount 0
 position 776 360 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofBullRun
 battleDescription The first major battle of Civil War. Took place in William county, Virginia and won by Confederates.
 soldierCount 868
 position 823 99 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofAntietam
 battleDescription A Major battle in Civil war fought in Sharpsburg, Maryland with over 22,717 dead, wounded, or missing.
 soldierCount 3675
 position 820 64 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofChancellorsville
 battleDescription A Major battle in Civil war fought in Sharpsburg, Maryland with over 22,717 dead, wounded, or missing.
 soldierCount 3675
 position 858 102 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofGettysburg
 battleDescription Known as the turning point of American civil War is the highest-casualty battle of war. It took place in Gettysburg, Pennsylvania during July 1–3, 1863.
 soldierCount 7058
 position 876 40 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofAtlanta
 battleDescription Took place in Atlanta, Georgia during July 22nd 1984 where the Union won this battle. The fall of Atlanta was especially noteworthy for its political ramifications.
 soldierCount 4641
@@ -61,45 +56,83 @@ soldierCount 535
 position 346 190 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofFortsJacksonandSt.Philip
 battleDescription Was the decisive battle for possession of New Orleans in the American Civil War. It took place during April 18, 1862 – April 28, 1862 where the Union emerged victorious.
 soldierCount 1011
 position 476 515 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofSiegeofCorinth
 battleDescription Also known as the first Battle of Corinth was an American Civil War engagement lasting from April 29 to May 30, 1862, in Corinth, Mississippi where the Union emerged victorious.
 soldierCount 2000
 position 508 281 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofWinchester
 battleDescription fought on May 25, 1862, in and around Frederick County, Virginia, and Winchester, Virginia, was a major victory in Confederate Army.
 soldierCount 130
 position 600 110 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofWilderness
 battleDescription was fought during the period of 5-7th of 1864 in Virginia. The Battle was tactically inconclusive. Both armies suffered heavy casualties, around 5,000 men killed in total
 soldierCount 3723
 position 500 300 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
+stop
 nameofBattle BattleofChickamauga
 battleDescription The Battle of Gaines' Mill, took place on June 27, 1862, in Hanover County, Virginia, as the third of the Seven Days Battles (Peninsula Campaign) of the American Civil War.
 soldierCount 2733
 position 600 270 15 15
 side 0
 imgpath Resources//img.jpg
-end
+stop
 edge 0 3 119
+edge 0 5 49
+edge 1 2 13
+edge 1 3 15
+edge 1 10 62
+edge 2 1 13
+edge 2 4 24
+edge 2 3 21
+edge 2 10 69
+edge 3 1 15
+edge 3 2 21
+edge 3 4 44
+edge 3 0 89
+edge 4 2 24
+edge 4 1 38
+edge 4 3 45
+edge 5 0 37
+edge 5 12 43
+edge 5 11 46
+edge 6 12 11
+edge 6 7 65
+edge 6 10 56
+edge 7 10 69
+edge 7 8 55
+edge 7 6 45
+edge 8 7 99
+edge 8 11 84
+edge 9 11 12
+edge 9 6 13
+edge 9 12 32
+edge 10 7 57
+edge 10 6 72
+edge 10 1 59
+edge 10 2 68
+edge 10 12 56
+edge 11 8 50
+edge 11 12 15
+edge 11 5 37
+edge 11 9 9
+edge 12 6 14
+edge 12 0 108
+edge 12 5 37
+edge 12 11 47
+edge 12 11 72

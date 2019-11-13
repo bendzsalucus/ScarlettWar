@@ -56,7 +56,7 @@ public class NodeImporter {
 		}
 		while (scanner.hasNextLine()) {
 			String currentLine = scanner.next();
-			if (currentLine.equals("nextBattle") || currentLine.equals("end")) {
+			if (currentLine.equals("stop")){
 				makeNewBattle();
 			}
 			if (currentLine.equals("nameofBattle")) {

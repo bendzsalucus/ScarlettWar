@@ -58,13 +58,13 @@ public class MainMenu {
 
 		class NewGameListener implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
 				JFrame frame2 = new JFrame();
 				frame2.setSize(1000, 1000);
 				frame2.add(new GuiComponenet());
 				frame2.setTitle("Map");
 				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame2.setVisible(true);
+				frame2.setResizable(false);
 	
 			}
 		}
