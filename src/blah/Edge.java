@@ -14,7 +14,6 @@ public class Edge {
 		this.connectionOne=endOne;
 		this.connectionTwo=endTwo;
 //		connectionOne.addEdge(this);
-//		connectionTwo.addEdge(this);
 	}
 	
 	public Edge(BattleNode nextNode, double cost) {

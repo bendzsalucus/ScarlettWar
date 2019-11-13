@@ -48,7 +48,8 @@ public class GuiComponenet extends JComponent {
 		ArrayList<BattleNode> battles = importer.getBattles();
 		battles.stream().forEach(e -> {
 			g.setColor(e.color);
-			((Graphics2D) g).fill(e.getBoundingBox());
+			e.drawOn(g);
+//			((Graphics2D) g).fill(e.getBoundingBox());
 			g.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			if (e.battleName != null) {
 				g.setColor(Color.BLUE);

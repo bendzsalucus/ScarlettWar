@@ -1,12 +1,12 @@
 package blah;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class BattleNode extends GameObject{
 
-	private ArrayList<Edge> edgeConnections;
 	public int x;
 	public int y;
 	public int width;
@@ -33,14 +33,14 @@ public class BattleNode extends GameObject{
 
 
 	public void addEdge(Edge edge, BattleNode node, double cost) {
-		if (edgeConnections.contains(edge)) {
-			for (int i = 0; i < edgeConnections.size(); i++) {
-				if (edge == edgeConnections.get(i)) {
-					edgeConnections.remove(i);
+		if (edges.contains(edge)) {
+			for (int i = 0; i < edges.size(); i++) {
+				if (edge == edges.get(i)) {
+					edges.remove(i);
 				}
 			}
 		}
-		edgeConnections.add(new Edge(this, node, cost));
+		edges.add(new Edge(this, node, cost));
 	}
 
 	public ArrayList<BattleNode> shortestPath(String targetName) {
@@ -53,7 +53,7 @@ public class BattleNode extends GameObject{
 
 		// creates stack of edges with least edge cost on the top
 		Stack<Edge> junkPile = new Stack<Edge>();
-		ArrayList<Edge> copyList = edgeConnections;
+		ArrayList<Edge> copyList = edges;
 		// checks whether current node is a leaf
 		if (copyList.size() == 0) {
 			return null;
@@ -114,9 +114,9 @@ public class BattleNode extends GameObject{
 				return cost;
 			}
 			nextNode = pathList.get(i - 1);
-			for (int j = 0; j < currentNode.edgeConnections.size(); j++) {
-				if (currentNode.edgeConnections.get(j).getNextNode(currentNode) == nextNode) {
-					cost += currentNode.edgeConnections.get(j).getCost();
+			for (int j = 0; j < currentNode.edges.size(); j++) {
+				if (currentNode.edges.get(j).getNextNode(currentNode) == nextNode) {
+					cost += currentNode.edges.get(j).getCost();
 					break;
 				}
 			}
@@ -127,5 +127,9 @@ public class BattleNode extends GameObject{
 
 	public String getName() {
 		return battleName;
+	}
+	
+	public void drawOn(Graphics g) {
+		g.drawRect(this.x, this.y, this.width, this.height);
 	}
 }
