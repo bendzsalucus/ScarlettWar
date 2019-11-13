@@ -30,9 +30,6 @@ public class Graph {
 		return battleList;
 	}
 	
-	public void organizeGraph() {
-		//fun...
-	}
 	
 	public void drawGraph(Graphics2D mapVisual) {
 		int i=0;
@@ -49,7 +46,7 @@ public class Graph {
 			throw new IllegalArgumentException();
 		}
 		return initialPosition.shortestPath(finalDestination);//currently not the best path but only a path
-																							  //consider adding visited node list
+															  //consider adding visited node list
 	}
 	// addedge
 	

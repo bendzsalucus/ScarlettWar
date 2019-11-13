@@ -50,7 +50,8 @@ public class GuiComponenet extends JComponent {
 		battles.stream().forEach(e -> {
 			System.out.println(e.battleName);
 			g.setColor(e.color);
-			((Graphics2D) g).fill(e.getBoundingBox());
+			e.drawOn(g);
+//			((Graphics2D) g).fill(e.getBoundingBox());
 			g.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			if (e.battleName != null) {
 				g.setColor(Color.BLUE);
