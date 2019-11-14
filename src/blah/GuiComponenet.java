@@ -46,7 +46,7 @@ public class GuiComponenet extends JComponent {
 	private void handleBattles(Graphics g) {
 
 		ArrayList<BattleNode> battles = importer.getBattles();
-		System.out.println("hello");
+//		System.out.println("hello");
 		battles.stream().forEach(e -> {
 			System.out.println(e.battleName);
 			g.setColor(e.color);
