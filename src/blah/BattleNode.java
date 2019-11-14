@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class BattleNode extends GameObject{
+public class BattleNode extends GameObject {
 
 	public int x;
 	public int y;
@@ -30,7 +30,6 @@ public class BattleNode extends GameObject{
 		this.color = color;
 		this.edges = edges;
 	}
-
 
 	public void addEdge(Edge edge, BattleNode node, double cost) {
 		if (edges.contains(edge)) {
@@ -128,11 +127,16 @@ public class BattleNode extends GameObject{
 	public String getName() {
 		return battleName;
 	}
-	
+
 	public void drawOn(Graphics g) {
+<<<<<<< HEAD
+		g.setColor(this.color);
+		g.fillRect(x, y, width, height);
+=======
 		g.drawRect(this.x, this.y, this.width, this.height);
 		for(int i=0;i<edges.size();i++) {
 			g.drawLine(x, y,(int) edges.get(i).getNextNode(this).getX(), (int)edges.get(i).getNextNode(this).getY());
 		}
+>>>>>>> 0026b81864ded018718aab8a58044ef0eb87d096
 	}
 }

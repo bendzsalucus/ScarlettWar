@@ -25,20 +25,18 @@ import javax.swing.JPanel;
  * 
  * @author Lucus Bendzsa. Created May 2019.
  */
-public class MainMenu {
+public class Scarlett {
 
 	private JLabel label = new JLabel();
 	private JFrame frame;
 
 	public static void main(String[] args) {
-		new MainMenu();
+		new Scarlett();
 	}
 
-	public MainMenu() {
-		ArrayList b = new ArrayList();
-		ArrayList a = new ArrayList();
-		a.add(1);
-		b.add(a);
+	public Scarlett() {
+
+	
 		
 		frame = new JFrame();
 		JPanel panel = new JPanel();
@@ -58,9 +56,10 @@ public class MainMenu {
 
 		class NewGameListener implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
+				MyBoolean booly = new MyBoolean();
 				JFrame frame2 = new JFrame();
 				frame2.setSize(1000, 1000);
-				frame2.add(new GuiComponenet());
+				frame2.add(new GuiComponenet(booly));
 				frame2.setTitle("Map");
 				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame2.setVisible(true);
@@ -90,6 +89,18 @@ public class MainMenu {
 		frame.setSize(520, 520);
 		frame.setVisible(true);
 
+	}
+
+}
+class MyBoolean {
+	private boolean value = true;
+
+	public void setFalse() {
+		value = false;
+	}
+
+	public boolean getValue() {
+		return value;
 	}
 
 }
