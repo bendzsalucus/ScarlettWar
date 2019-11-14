@@ -5,8 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Edge {
 
-	private BattleNode connectionOne;
-	private BattleNode connectionTwo;
+	public BattleNode connectionOne;
+	public BattleNode connectionTwo;
 	private double cost;
 	
 	public Edge(BattleNode endOne, BattleNode endTwo, double cost) {

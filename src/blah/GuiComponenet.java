@@ -25,40 +25,56 @@ import javax.swing.JComponent;
  * @author Lucus Bendzsa.
  */
 public class GuiComponenet extends JComponent {
+	int i;
+	private boolean ran;
 	private NodeImporter importer;
+	private ArrayList<BattleNode> battles;
 
+
+	public GuiComponenet(MyBoolean booly) {
+		handleimport(booly);
+	}
+	
+	
+	@Override
 	/*
 	 * No Javadoc is needed, because we inherit one. (Hover on paintComponent.)
-	 */
-	@Override
+	*/
 	protected void paintComponent(Graphics g) {
 		// Asks the superclass to do its work
 		super.paintComponent(g);
-		Graphics2D graphics2 = (Graphics2D) g;
-		this.importer = new NodeImporter(1);
-
 		// DO NOT TOUCH ABOVE
+		this.ran = false;
 		handleBackground(g);
 		handleBattles(g);
+		
 
 	}
 
 	private void handleBattles(Graphics g) {
-
-		ArrayList<BattleNode> battles = importer.getBattles();
-		System.out.println("hello");
+		System.out.println("This");
 		battles.stream().forEach(e -> {
-			System.out.println(e.battleName);
+//			System.out.println(e.battleName);
 			g.setColor(e.color);
 			e.drawOn(g);
-//			((Graphics2D) g).fill(e.getBoundingBox());
+			((Graphics2D) g).fill(e.getBoundingBox());		
 			g.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 			if (e.battleName != null) {
 				g.setColor(Color.BLUE);
-				g.drawString(e.battleName,(int)e.getX()-100,(int) e.getY() + 30);
+				g.drawString(e.battleName, (int) e.getX() - 100, (int) e.getY() + 30);
 			}
 		});
 
+	}
+
+	private ArrayList handleimport(MyBoolean booly) {
+		if (booly.getValue() == true) {
+			booly.setFalse();
+			importer = new NodeImporter(1);
+			battles = importer.getBattles();
+			return importer.getBattles();
+		}
+		return battles;
 	}
 
 	private void handleBackground(Graphics g) {

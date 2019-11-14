@@ -1,6 +1,7 @@
 package blah;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,7 +46,6 @@ public class NodeImporter {
 	 */
 
 	private void readBattle() {
-
 		Scanner scanner;
 		String scanString = ("Resoruces//Map" + this.mapNum + ".txt");
 		try {
@@ -56,7 +56,7 @@ public class NodeImporter {
 		}
 		while (scanner.hasNextLine()) {
 			String currentLine = scanner.next();
-			if (currentLine.equals("stop")){
+			if (currentLine.equals("stop")) {
 				makeNewBattle();
 			}
 			if (currentLine.equals("nameofBattle")) {
@@ -139,6 +139,7 @@ public class NodeImporter {
 	public String getBackGroundPath() {
 		return this.imgPath;
 	}
+
 	public int getLevel() {
 		return this.mapNum;
 	}
