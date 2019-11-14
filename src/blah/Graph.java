@@ -1,5 +1,6 @@
 package blah;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,12 +8,15 @@ public class Graph {
 	private HashMap<String,BattleNode> battleList;
 	private BattleNode initialPosition;
 	
+	private ArrayList<BattleNode> tempArray;
+	
 	public Graph(ArrayList<BattleNode> allBattles) {
 		//ReaderClass to read all present battles
 		for(int i=0;i>allBattles.size();i++) {
 			battleList.put(allBattles.get(i).getName(), allBattles.get(i));
 		}
-		this.initialPosition=battleList.get("Bull Run");
+		this.initialPosition=null;
+		tempArray=allBattles;
 }
 	
 	
@@ -33,8 +37,8 @@ public class Graph {
 	
 	public void drawGraph(Graphics2D mapVisual) {
 		int i=0;
-		while(battleList.get(i)!=null) {
-//			battleList.get(i).drawOn(mapVisual);
+		while(tempArray.get(i)!=null) {
+			tempArray.get(i).drawOn(mapVisual);
 		}
 	}
 	
@@ -50,5 +54,16 @@ public class Graph {
 	}
 	// addedge
 	
-	
+	public void hitNode(Point click) {
+		BattleNode closestBattle=null;
+		for(int i=0;i<tempArray.size();i++) {
+			if(Point.distance(click.x, click.y, tempArray.get(i).getX(), tempArray.get(i).getY())<20) {
+				closestBattle=tempArray.get(i);
+			}
+		}
+		if(initialPosition==null) {
+			initialPosition=closestBattle;
+		}
+		
+	}
 }

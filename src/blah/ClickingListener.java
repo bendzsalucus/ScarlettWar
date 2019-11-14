@@ -3,8 +3,6 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import Game;
-
 public class ClickingListener implements MouseListener {
 
 	private Graph m;
@@ -21,7 +19,7 @@ public class ClickingListener implements MouseListener {
 		}
 		
 		Point click=e.getPoint();
-		switch(this.m.clickLock(click)) {
+		switch(this.m.hitNode(click)) {
 		case 1:
 			System.out.println("Case 1 (Probably hit a node)");
 		default:

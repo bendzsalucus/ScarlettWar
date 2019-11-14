@@ -131,5 +131,8 @@ public class BattleNode extends GameObject{
 	
 	public void drawOn(Graphics g) {
 		g.drawRect(this.x, this.y, this.width, this.height);
+		for(int i=0;i<edges.size();i++) {
+			g.drawLine(x, y,(int) edges.get(i).getNextNode(this).getX(), (int)edges.get(i).getNextNode(this).getY());
+		}
 	}
 }
