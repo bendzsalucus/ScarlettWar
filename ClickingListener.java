@@ -1,4 +1,4 @@
-package blah;
+
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -18,14 +18,14 @@ public class ClickingListener implements MouseListener {
 			
 		}
 		
-		Point click=e.getPoint();
-		switch(this.m.hitNode(click)) {
-		case 1:
-			System.out.println("Case 1 (Probably hit a node)");
-		default:
-			System.out.println("System broke");
-			break;
-		}
+//		Point click=e.getPoint();
+//		switch(this.m.hitNode(click)) {
+//		case 1:
+//			System.out.println("Case 1 (Probably hit a node)");
+//		default:
+//			System.out.println("System broke");
+//			break;
+//		}
 	}
 
 	@Override

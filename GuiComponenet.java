@@ -1,4 +1,4 @@
-package blah;
+
 
 import java.awt.Color;
 import java.awt.Font;
@@ -26,9 +26,12 @@ import javax.swing.JComponent;
  */
 public class GuiComponenet extends JComponent {
 	int i;
+	int x=2;
 	private boolean ran;
 	private NodeImporter importer;
 	private ArrayList<BattleNode> battles;
+	private BattleNode initalNode;
+	private BattleNode targetNode;
 
 
 	public GuiComponenet(MyBoolean booly) {
@@ -48,17 +51,35 @@ public class GuiComponenet extends JComponent {
 		handleBackground(g);
 		handleBattles(g);
 		
+		
+		
+//		BattleNode inital;
+//		for(int i=0; i<battles.size();i++) {
+//			if(battles)
+//		}
 
+	}
+	
+	public void updateScreen() {
+		x++;
+		importer = new NodeImporter(2);  //currently only works on a line...
+		battles = importer.getBattles();
+		//we need to get rid of this and just update the lines, not nodes...
+		
+		
+//		if(initalNode!=null&&targetNode!=null) {
+//			System.out.println(initalNode.battleName+" "+targetNode.battleName);
+//			System.out.println(initalNode.shortestPath(targetNode.battleName));
+//			g.drawString(initalNode.shortestPath(targetNode.battleName).toString(), 10,900);
+//		}
+		this.repaint();
 	}
 
 	private void handleBattles(Graphics g) {
-<<<<<<< HEAD
 
 		ArrayList<BattleNode> battles = importer.getBattles();
 //		System.out.println("hello");
-=======
-		System.out.println("This");
->>>>>>> 1df976058e70bdc5d51d21edc1f87a0433aa5f07
+//		System.out.println("This");
 		battles.stream().forEach(e -> {
 //			System.out.println(e.battleName);
 			g.setColor(e.color);
@@ -70,7 +91,43 @@ public class GuiComponenet extends JComponent {
 				g.drawString(e.battleName, (int) e.getX() - 100, (int) e.getY() + 30);
 			}
 		});
+		g.drawString("    Battle -----to---- Battle", 750, 835);
+		if(initalNode!=null&&targetNode!=null) {
+			System.out.println(initalNode.battleName+" to "+targetNode.battleName);
+			System.out.println(initalNode.shortestPath(targetNode.battleName).toString());
+//			g.drawString(initalNode.shortestPath(targetNode.battleName).toString(), 10,900);
+		}
+		
+//		g.drawString("Battles traveled through: "+battles.get(0).shortestPath("BattleofGettysburg"), 10, 850);
+		//this will be in a new method called by the fact the 2 text boxes are not null
+		//otherwise, we get that clicker method going...
+	}
+	
+	public void reset() {
+		initalNode=null;
+		return;
+	}
+	
+	public void insertInput(String input, int textBox) {
+		if(textBox==1) {
+			initalNode=searchFor(input);
 
+		}
+		if(textBox==2) {
+			targetNode=searchFor(input);
+		}
+		else if(targetNode==null||initalNode==null){
+			System.out.println("Battle(s) not found in system.");
+		}
+	}
+	
+	public BattleNode searchFor(String nodeName) {
+		for(int i=0; i<battles.size(); i++) {
+			if(battles.get(i).battleName.equals(nodeName)) {
+				return battles.get(i);
+			}
+		}
+		return null;
 	}
 
 	private ArrayList handleimport(MyBoolean booly) {

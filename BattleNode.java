@@ -1,6 +1,6 @@
-package blah;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Stack;
@@ -29,6 +29,8 @@ public class BattleNode extends GameObject {
 		this.isUnion = isUnion;
 		this.color = color;
 		this.edges = edges;
+		this.x = (int) x;
+		this.y = (int) y;
 	}
 
 	public void addEdge(Edge edge, BattleNode node, double cost) {
@@ -47,16 +49,19 @@ public class BattleNode extends GameObject {
 		if (this.battleName.equals(targetName)) {
 			ArrayList<BattleNode> array = new ArrayList<BattleNode>();
 			array.add(this);
+			System.out.println("Target Node found. Returning an arrayList");
 			return array;
 		}
 
 		// creates stack of edges with least edge cost on the top
 		Stack<Edge> junkPile = new Stack<Edge>();
 		ArrayList<Edge> copyList = edges;
-		// checks whether current node is a leaf
-		if (copyList.size() == 0) {
+		if (copyList == null) {
+			System.out.println(battleName+" has no edges! It's also not the battle you are looking for...");
 			return null;
 		}
+		//Stuff above this should logically work...
+		
 		while (copyList.size() != 0) {
 			Edge mostCost = copyList.get(0);
 			// compares mostCost to other costs in the copyList
@@ -102,6 +107,8 @@ public class BattleNode extends GameObject {
 		return null;
 	}
 
+	
+	
 	public double getCostOfPath(ArrayList<BattleNode> pathList) {
 		pathList.add(this);
 		BattleNode currentNode;
@@ -109,7 +116,7 @@ public class BattleNode extends GameObject {
 		double cost = 0;
 		for (int i = pathList.size() - 1; i >= 0; i--) {
 			currentNode = pathList.get(i);
-			if (pathList.get(i - 1) == null) {
+			if ((i - 1 < 0) || pathList.get(i - 1).edges == null) {
 				return cost;
 			}
 			nextNode = pathList.get(i - 1);
@@ -120,23 +127,26 @@ public class BattleNode extends GameObject {
 				}
 			}
 		}
-
 		return cost;
 	}
-
+	
+	
 	public String getName() {
 		return battleName;
 	}
 
 	public void drawOn(Graphics g) {
-<<<<<<< HEAD
 		g.setColor(this.color);
 		g.fillRect(x, y, width, height);
-=======
 		g.drawRect(this.x, this.y, this.width, this.height);
-		for(int i=0;i<edges.size();i++) {
-			g.drawLine(x, y,(int) edges.get(i).getNextNode(this).getX(), (int)edges.get(i).getNextNode(this).getY());
+		if (this.edges != null) {
+			for (int i = 0; i < edges.size(); i++) {
+				g.drawLine(this.x, this.y, (int) edges.get(i).getNextNode(this).getX(),	(int) edges.get(i).getNextNode(this).getY());
+				if(edges.get(i).getNextNode(this).edges==null) {
+					g.drawString("Battle you have arrived at: "+edges.get(i).getNextNode(this).getName(), 10, 780);
+					g.drawString("Battle Description: "+edges.get(i).getNextNode(this).battleDescription, 10, 800);
+				}
+			}
 		}
->>>>>>> 0026b81864ded018718aab8a58044ef0eb87d096
-	}
+		}
 }

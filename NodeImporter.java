@@ -1,4 +1,4 @@
-package blah;
+
 
 import java.awt.Color;
 import java.awt.Font;
@@ -33,6 +33,7 @@ public class NodeImporter {
 	private ArrayList<Edge> edges;
 
 	public NodeImporter(int mapNummy) {
+//		System.out.println(mapNummy);
 		battles = new ArrayList<BattleNode>();
 		mapNum = mapNummy;
 		readBattle();
@@ -60,7 +61,7 @@ public class NodeImporter {
 				makeNewBattle();
 			}
 			if (currentLine.equals("nameofBattle")) {
-				nameofBattle = scanner.next();
+				nameofBattle = scanner.next()+" "+scanner.next()+" "+scanner.next();
 			}
 			if (currentLine.equals("battleDescription")) {
 				battleDescription = scanner.nextLine();

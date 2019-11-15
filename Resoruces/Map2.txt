@@ -1,30 +1,92 @@
 nextBattle
-nameofBattle TheBattleofFortSumter
+nameofBattle Battle of FortSumter
 battleDescription The beginning of American Civil War when the bombardment of Fort Sumter near Charleston, South Carolina by the South Carolina militia and the return gunfire and subsequent surrender by the United States Army took place.
 soldierCount 0
-position 776 360 20 20
+position 776 360 15 15
 side 0
 imgpath Resources//img.jpg
-end
-nextBattle
-nameofBattle Anitediem
-battleDescription War in Virginia where people died
-soldierCount 87
-position 700 500 10 10
+stop
+nameofBattle Battle of BullRun
+battleDescription The first major battle of Civil War. Took place in William county, Virginia and won by Confederates.
+soldierCount 868
+position 823 99 15 15
 side 0
 imgpath Resources//img.jpg
-nextBattle
-nameofBattle Shiloh
-battleDescription War in Virginia where people died
-soldierCount 87
-position 300 500 10 10
+stop
+nameofBattle Battle of Antietam
+battleDescription A Major battle in Civil war fought in Sharpsburg, Maryland with over 22,717 dead, wounded, or missing.
+soldierCount 3675
+position 820 64 15 15
 side 0
 imgpath Resources//img.jpg
-nextBattle
-nameofBattle BullRun
-battleDescription War in Virginia where people died
-soldierCount 87
-position 200 200 10 10
+stop
+nameofBattle Battle of Chancellorsville
+battleDescription A Major battle in Civil war fought in Sharpsburg, Maryland with over 22,717 dead, wounded, or missing.
+soldierCount 3675
+position 858 102 15 15
 side 0
 imgpath Resources//img.jpg
-end
+stop
+nameofBattle Battle of Gettysburg
+battleDescription Known as the turning point of American civil War is the highest-casualty battle of war. It took place in Gettysburg, Pennsylvania during July 1–3, 1863.
+soldierCount 7058
+position 876 40 15 15
+side 0
+imgpath Resources//img.jpg
+stop
+nameofBattle Battle of Atlanta
+battleDescription Took place in Atlanta, Georgia during July 22nd 1984 where the Union won this battle. The fall of Atlanta was especially noteworthy for its political ramifications.
+soldierCount 4641
+position 655 346 15 15
+side 0
+imgpath Resources//img.jpg
+stop
+nameofBattle Battle of Shiloh
+battleDescription Also known as Battle of Pittsburg landing, is one of the highest casualty battle of war in the American civil war. It took place at Hardin county, Tennessee during April 6-7th of 1862.
+soldierCount 4641
+position 500 260 15 15
+side 0
+imgpath Resources//img.jpg
+stop
+nameofBattle Battle of OakHills
+battleDescription Also known as Battle of Wilson's Creek, was fought on August 10, 1861, near Springfield, Missouri where the Confederate emerged victorious.
+soldierCount 535
+position 346 190 15 15
+side 0
+imgpath Resources//img.jpg
+stop
+nameofBattle Battle of FortsJacksonandSt.Philip
+battleDescription Was the decisive battle for possession of New Orleans in the American Civil War. It took place during April 18, 1862 – April 28, 1862 where the Union emerged victorious.
+soldierCount 1011
+position 476 515 15 15
+side 0
+imgpath Resources//img.jpg
+stop
+nameofBattle Battle of SiegeofCorinth
+battleDescription Also known as the first Battle of Corinth was an American Civil War engagement lasting from April 29 to May 30, 1862, in Corinth, Mississippi where the Union emerged victorious.
+soldierCount 2000
+position 508 281 15 15
+side 0
+imgpath Resources//img.jpg
+stop
+nameofBattle Battle of Winchester
+battleDescription Fought on May 25, 1862, in and around Frederick County, Virginia, and Winchester, Virginia, was a major victory in Confederate Army.
+soldierCount 130
+position 600 110 15 15
+side 0
+imgpath Resources//img.jpg
+stop
+nameofBattle Battle of Wilderness
+battleDescription Was fought during the period of 5-7th of 1864 in Virginia. The Battle was tactically inconclusive. Both armies suffered heavy casualties, around 5,000 men killed in total
+soldierCount 3723
+position 500 300 15 15
+side 0
+imgpath Resources//img.jpg
+stop
+nameofBattle Battle of Chickamauga
+battleDescription The Battle of Gaines' Mill, took place on June 27, 1862, in Hanover County, Virginia, as the third of the Seven Days Battles (Peninsula Campaign) of the American Civil War.
+soldierCount 2733
+position 600 270 15 15
+side 0
+imgpath Resources//img.jpg
+stop
