@@ -60,7 +60,6 @@ public class BattleNode extends GameObject {
 			System.out.println(battleName+" has no edges! It's also not the battle you are looking for...");
 			return null;
 		}
-		//Stuff above this should logically work...
 		
 		while (copyList.size() != 0) {
 			Edge mostCost = copyList.get(0);
@@ -76,6 +75,11 @@ public class BattleNode extends GameObject {
 		// Assumptions at this point: junk has at least one edge, junk is orders with
 		// least at the top, and the target is not this node
 		// Creates a comparison number and reference
+				
+		System.out.println(battleName);
+		
+		//Stuff above this should logically work...
+
 		double leastPath = Double.POSITIVE_INFINITY;
 		ArrayList<BattleNode> leastList = null;
 		// while the stack is not empty, compare the costs of the edges

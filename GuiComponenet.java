@@ -25,8 +25,6 @@ import javax.swing.JComponent;
  * @author Lucus Bendzsa.
  */
 public class GuiComponenet extends JComponent {
-	int i;
-	int x=2;
 	private boolean ran;
 	private NodeImporter importer;
 	private ArrayList<BattleNode> battles;
@@ -61,8 +59,7 @@ public class GuiComponenet extends JComponent {
 	}
 	
 	public void updateScreen() {
-		x++;
-		importer = new NodeImporter(2);  //currently only works on a line...
+		importer = new NodeImporter(6);  //currently only works on a line...
 		battles = importer.getBattles();
 		//we need to get rid of this and just update the lines, not nodes...
 		
@@ -94,7 +91,9 @@ public class GuiComponenet extends JComponent {
 		g.drawString("    Battle -----to---- Battle", 750, 835);
 		if(initalNode!=null&&targetNode!=null) {
 			System.out.println(initalNode.battleName+" to "+targetNode.battleName);
-			System.out.println(initalNode.shortestPath(targetNode.battleName).toString());
+			ArrayList<BattleNode> shortestPath=initalNode.shortestPath(targetNode.battleName);
+			shortestPath.stream().forEach(e -> System.out.println(e.battleName));
+//			System.out.println(initalNode.shortestPath(targetNode.battleName).toString());
 //			g.drawString(initalNode.shortestPath(targetNode.battleName).toString(), 10,900);
 		}
 		
@@ -133,7 +132,7 @@ public class GuiComponenet extends JComponent {
 	private ArrayList handleimport(MyBoolean booly) {
 		if (booly.getValue() == true) {
 			booly.setFalse();
-			importer = new NodeImporter(1);
+			importer = new NodeImporter(6);
 			battles = importer.getBattles();
 			return importer.getBattles();
 		}
