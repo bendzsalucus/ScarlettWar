@@ -65,7 +65,7 @@ public class Scarlett {
 				JButton nextB=new JButton("Go!");
 				JButton quitB=new JButton("Quit to Main Menu");
 				GuiComponenet component=new GuiComponenet(booly);
-				JTextField inputText1 = new JTextField("Battle of OakHills");
+				JTextField inputText1 = new JTextField("Battle of FortsJacksonandSt.Philip");
 				JTextField inputText2 = new JTextField("Battle of Gettysburg");
 
 				frame2.setPreferredSize(new Dimension(1000, 1000));

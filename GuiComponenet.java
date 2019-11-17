@@ -48,14 +48,6 @@ public class GuiComponenet extends JComponent {
 		this.ran = false;
 		handleBackground(g);
 		handleBattles(g);
-		
-		
-		
-//		BattleNode inital;
-//		for(int i=0; i<battles.size();i++) {
-//			if(battles)
-//		}
-
 	}
 	
 	public void updateScreen() {
@@ -75,10 +67,7 @@ public class GuiComponenet extends JComponent {
 	private void handleBattles(Graphics g) {
 
 		ArrayList<BattleNode> battles = importer.getBattles();
-//		System.out.println("hello");
-//		System.out.println("This");
 		battles.stream().forEach(e -> {
-//			System.out.println(e.battleName);
 			g.setColor(e.color);
 			e.drawOn(g);
 			((Graphics2D) g).fill(e.getBoundingBox());		
@@ -91,8 +80,19 @@ public class GuiComponenet extends JComponent {
 		g.drawString("    Battle -----to---- Battle", 750, 835);
 		if(initalNode!=null&&targetNode!=null) {
 			System.out.println(initalNode.battleName+" to "+targetNode.battleName);
-			ArrayList<BattleNode> shortestPath=initalNode.shortestPath(targetNode.battleName);
-			shortestPath.stream().forEach(e -> System.out.println(e.battleName));
+			ArrayList<BattleNode> shortestPath=initalNode.shortestPath(targetNode.battleName, new ArrayList<BattleNode>());
+			if(shortestPath==null) {
+				System.out.println("There is no path to the specified location. Try a different route.");
+			}
+			if(shortestPath!=null) {
+				String list="";
+for (int i=shortestPath.size()-1;i>=0;i--) {
+	list +=shortestPath.get(i).battleName+ ", ";
+}
+				g.drawString(list, 10,900);
+//				shortestPath.stream().forEach(e -> System.out.println(e.battleName));
+				System.out.println(initalNode.getCostOfPath(shortestPath));
+			}
 //			System.out.println(initalNode.shortestPath(targetNode.battleName).toString());
 //			g.drawString(initalNode.shortestPath(targetNode.battleName).toString(), 10,900);
 		}
@@ -110,12 +110,11 @@ public class GuiComponenet extends JComponent {
 	public void insertInput(String input, int textBox) {
 		if(textBox==1) {
 			initalNode=searchFor(input);
-
 		}
 		if(textBox==2) {
 			targetNode=searchFor(input);
 		}
-		else if(targetNode==null||initalNode==null){
+		if((targetNode==null&&textBox==2)||(initalNode==null&&textBox==1)){
 			System.out.println("Battle(s) not found in system.");
 		}
 	}
@@ -129,7 +128,7 @@ public class GuiComponenet extends JComponent {
 		return null;
 	}
 
-	private ArrayList handleimport(MyBoolean booly) {
+	private ArrayList<BattleNode> handleimport(MyBoolean booly) {
 		if (booly.getValue() == true) {
 			booly.setFalse();
 			importer = new NodeImporter(6);

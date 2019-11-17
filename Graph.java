@@ -49,7 +49,7 @@ public class Graph {
 		if(initialPosition==null) {
 			throw new IllegalArgumentException();
 		}
-		return initialPosition.shortestPath(finalDestination);//currently not the best path but only a path
+		return initialPosition.shortestPath(finalDestination, null);//currently not the best path but only a path
 															  //consider adding visited node list
 	}
 	// addedge
