@@ -1,6 +1,6 @@
 nextBattle
 nameofBattle . . Black_Widow
-battleDescription Agent Natalia Romanov is just as sexy as she is deadly. Master of stealth you will never hear her coming.
+battleDescription Agent Natalia Romanov is just as deadly as she is sexy. Silet as a cat, she sneaks behind her prey and kills them silenty. 
 soldierCount 0
 position 729 225 15 15
 textOffset 0 0
@@ -8,7 +8,7 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Hulk
-battleDescription Dr. Banner is a nice, guy.... unless you make him angry. Then he is a huge green mosnter that will tear you apart. 
+battleDescription Dr. Banner is a nice guy, unless you make him angry then he is a huge green monster that will rip off your arms.
 soldierCount 868
 position 769 283 15 15
 textOffset 0 0 
@@ -16,7 +16,7 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Iron_Man
-battleDescription dflsk
+battleDescription Typical billionaire with a ton of swagger... except he flies around in an iron suit saving the world. 
 soldierCount 3675
 position 292 281 15 15
 textOffset 0 0 
@@ -24,7 +24,7 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Black_Panther
-battleDescription A Major battle in Civil war fought in Sharpsburg, Maryland with over 22,717 dead, wounded, or missing.
+battleDescription Leader of Wakanda and a feirce fighter. 
 soldierCount 3675
 position 508 367 15 15
 textOffset 0 0 
@@ -32,7 +32,7 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Groot
-battleDescription Known as the turning point of American civil War is the highest-casualty battle of war. It took place in Gettysburg, Pennsylvania during July 1–3, 1863.
+battleDescription Trees are supossed to be peaceful and calm... well, not this one! Groot is a resourcefully ally to the Guardians.
 soldierCount 7058
 position 888 501 15 15
 textOffset 0 0 
@@ -40,7 +40,7 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Rocket
-battleDescription Took place in Atlanta, Georgia during July 22nd 1984 where the Union won this battle. The fall of Atlanta was especially noteworthy for its political ramifications.
+battleDescription This genetically modified racoon has a crude sense of humor and loves his deadly toys. 
 soldierCount 4641
 position 821 173 15 15
 textOffset -40 -20 
@@ -48,7 +48,7 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Gamora
-battleDescription Also known as Battle of Pittsburg landing, is one of the highest casualty battle of war in the American civil war. It took place at Hardin county, Tennessee during April 6-7th of 1862.
+battleDescription Converted daughter of Thanos that now wants to destroy him. 
 soldierCount 4641
 position 347 512 15 15
 textOffset 0 0 
@@ -56,7 +56,7 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Hawkeye
-battleDescription Also known as Battle of Wilson's Creek, was fought on August 10, 1861, near Springfield, Missouri where the Confederate emerged victorious.
+battleDescription Who needs a sniper? This man can shoot an arrow from space and still knock the apple safely off your head. 
 soldierCount 535
 position 175 189 15 15
 textOffset 0 0 
@@ -64,7 +64,7 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Thor
-battleDescription Was the decisive battle for possession of New Orleans in the American Civil War. It took place during April 18, 1862 – April 28, 1862 where the Union emerged victorious.
+battleDescription Asguradian God that will use his big hammer to pound you into the ground. 
 soldierCount 1011
 position 208 275 15 15
 textOffset 0 0 
@@ -72,10 +72,18 @@ side 1
 imgpath Resources//img.jpg
 stop
 nameofBattle . . Captain_America
-battleDescription Also known as the first Battle of Corinth was an American Civil War engagement lasting from April 29 to May 30, 1862, in Corinth, Mississippi where the Union emerged victorious.
+battleDescription A true patriot from the WWII era. Fights with style and class. 
 soldierCount 2000
 position 243 276 15 15
 textOffset 0 -40 
+side 1
+imgpath Resources//img.jpg
+stop
+nameofBattle . . Spider_Man
+battleDescription Like your typical spider he can shoot webs and wrap you up. 
+soldierCount 2000
+position 550 235 15 15
+textOffset 0 0 
 side 1
 imgpath Resources//img.jpg
 stop
