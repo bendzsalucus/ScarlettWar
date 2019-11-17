@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.Line2D;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -23,6 +24,9 @@ public class GuiComponenet extends JComponent {
 	private BattleNode bat1;
 	private BattleNode bat2;
 	private int i;
+	
+	
+	private ArrayList<Line2D.Double> lineToDraw=new ArrayList<Line2D.Double>();
 
 	public GuiComponenet(int i) {
 		this.i = i;
@@ -39,23 +43,17 @@ public class GuiComponenet extends JComponent {
 		// DO NOT TOUCH ABOVE
 		handleBackground(g);
 		handleBattles(g);
-
+		
 		if (bat1 != null) {
 			printinfo(g);
 		}
-
-//		BattleNode inital;
-//		for(int i=0; i<battles.size();i++) {
-//			if(battles)
-//		}
-
 	}
 
 	public void updateScreen() {
 		importer = new NodeImporter(i); // currently only works on a line...
 		battles = importer.getBattles();
 		// we need to get rid of this and just update the lines, not nodes...
-
+		lineToDraw.removeAll(lineToDraw);
 //		if(initalNode!=null&&targetNode!=null) {
 //			System.out.println(initalNode.battleName+" "+targetNode.battleName);
 //			System.out.println(initalNode.shortestPath(targetNode.battleName));
@@ -73,7 +71,7 @@ public class GuiComponenet extends JComponent {
 			g.setColor(e.color);
 			e.drawOn(g);
 			((Graphics2D) g).fill(e.getBoundingBox());
-			g.setFont(new Font("Times New Roman", Font.BOLD, 20));
+			g.setFont(new Font("Arial", Font.BOLD, 20));
 			if (e.battleName != null) {
 				if (this.i == 6) {
 					g.setColor(Color.BLACK);
@@ -97,21 +95,32 @@ public class GuiComponenet extends JComponent {
 		if (i == 7) {
 			g.drawString("Select Two Avengers! ", 755, 780);
 		}
-		if (initalNode != null && targetNode != null) {
-			ArrayList<BattleNode> shortestPath = initalNode.shortestPath(targetNode.battleName,
-					new ArrayList<BattleNode>());
-			if (shortestPath == null) {
-				System.out.println("There is no path to the specified location. Try a different route.");
-			}
-			if (shortestPath != null) {
-				String list = "";
-				for (int i = shortestPath.size() - 1; i >= 0; i--) {
-					list += shortestPath.get(i).battleName + ", ";
-				}
-				g.drawString(list, 10, 900);
-				shortestPath.stream().forEach(e -> System.out.println(e.battleName));
-				System.out.println(initalNode.getCostOfPath(shortestPath));
-			}
+        if (initalNode != null && targetNode != null) {
+            ArrayList<BattleNode> shortestPath = initalNode.shortestPath(targetNode.battleName,
+                                          new ArrayList<BattleNode>());
+            if (shortestPath == null) {
+                           System.out.println("There is no path to the specified location. Try a different route.");
+            }
+            if (shortestPath != null) {
+                           String list = "";
+                           for (int r = shortestPath.size() - 1; r >= 0; r--) {
+                                          int concatNum = 0;
+                                          if (this.i == 6) {
+                                                         concatNum = 4;
+                                          } else {
+                                                         concatNum = 10;
+
+                                          }
+                                          String tempCat = shortestPath.get(r).battleName;
+                                          tempCat = tempCat.substring(concatNum);
+                                          list += tempCat + ", ";
+                           }
+                           g.setFont(new Font("Arial", Font.BOLD, 17));
+                           g.drawString(list, 10, 900);
+                           shortestPath.stream().forEach(e -> System.out.println(e.battleName));
+                           System.out.println(initalNode.getCostOfPath(shortestPath));
+            }
+		return;
 		}
 
 //		g.drawString("Battles traveled through: "+battles.get(0).shortestPath("BattleofGettysburg"), 10, 850);
@@ -119,10 +128,18 @@ public class GuiComponenet extends JComponent {
 		// otherwise, we get that clicker method going...
 	}
 
-	public void reset() {
-		initalNode = null;
-		return;
+	public void drawLines(ArrayList<BattleNode> path, Graphics g) {
+		Graphics2D g2=(Graphics2D) g;
+		for(int i=0;i<path.size()-1;i++) {
+			BattleNode currentNode=path.get(i);
+			BattleNode nextNode=path.get(i+1);
+			lineToDraw.add(new Line2D.Double(currentNode.getX(), currentNode.getY(), nextNode.getX(), nextNode.getY()));
+		//add thickness factor.
+		}
+		g2.setColor(Color.BLACK);
+		lineToDraw.stream().forEach(e -> g2.draw(e));
 	}
+	
 
 	public void insertInput(String input, int textBox) {
 		if (textBox == 1) {

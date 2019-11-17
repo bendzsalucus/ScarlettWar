@@ -55,6 +55,7 @@ public class BattleNode extends GameObject {
 		if (this.battleName.equals(targetName)) {
 			ArrayList<BattleNode> array = new ArrayList<BattleNode>();
 			array.add(this);
+			System.out.println("Found path");
 			return array;
 		}
 
@@ -97,6 +98,7 @@ public class BattleNode extends GameObject {
 		double leastPath = Double.POSITIVE_INFINITY;
 		ArrayList<BattleNode> leastList = new ArrayList<BattleNode>();
 		if(junkPile.size()==0) {
+			visitedNodes.stream().forEach(e -> System.out.println("Visited: "+e.battleName));
 			System.out.println("No edges. Returning from "+ battleName);
 			return null;
 		}
@@ -104,9 +106,11 @@ public class BattleNode extends GameObject {
 		while (junkPile.peek() != null) {
 			if(junkPile.size()==0) {
 				System.out.println("Have gone through all available paths.");
+				//went through all paths and all paths equal null?
 				return null;
 			}
 			Edge currentEdge = junkPile.peek();
+			//might break here
 			visitedNodes.add(this);
 			ArrayList<BattleNode> aListOfNodes = currentEdge.getNextNode(this).shortestPath(targetName, visitedNodes);
 			if (aListOfNodes == null) {
@@ -115,7 +119,8 @@ public class BattleNode extends GameObject {
 				break;
 			}
 			if (aListOfNodes != null) {
-
+System.out.println(aListOfNodes.size());
+				
 				// should compare the cost of the path for either default value (-infinity) or
 				// the current lowest cost path
 
@@ -129,8 +134,11 @@ public class BattleNode extends GameObject {
 			}
 		}
 		if (leastList != null) {
+			//return or continue to check
 			return leastList;
 		}
+		
+		//should return if the entire stack has been emptied...
 		return null;
 	}
 
