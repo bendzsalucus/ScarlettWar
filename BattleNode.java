@@ -49,18 +49,15 @@ public class BattleNode extends GameObject {
 	}
 
 	public ArrayList<BattleNode> shortestPath(String targetName, ArrayList<BattleNode> visitedNodes) {
-//		edges.stream().forEach(e -> System.out.println(this.battleName+ " to "+e.connectionTwo.battleName));
-		
 		// checks if current node is desired destination
 		if (this.battleName.equals(targetName)) {
-			ArrayList<BattleNode> array = new ArrayList<BattleNode>();
-			array.add(this);
-			System.out.println("Found path");
-			return array;
+			
+			visitedNodes.add(this);
+			return visitedNodes;
 		}
 
 		// creates stack of edges with least edge cost on the top
-		Stack<Edge> junkPile = new Stack<Edge>();
+		Stack<Edge> organizedPile = new Stack<Edge>();
 		ArrayList<Edge> copyList = new ArrayList<>();
 		if (edges == null||edges.size()==0) {
 			System.out.println(battleName+" has no edges! It's also not the battle you are looking for...");
@@ -86,59 +83,53 @@ public class BattleNode extends GameObject {
 					mostCost = copyList.get(i);
 				}
 			}
-			junkPile.add(mostCost);
+			organizedPile.add(mostCost);
 			copyList.remove(mostCost);
 		}
 		// Assumptions at this point: junk has at least one edge, junk is orders with
 		// least at the top, and the target is not this node
 		// Creates a comparison number and reference
-						
-		//Stuff above this should logically work...
-		
+								
 		double leastPath = Double.POSITIVE_INFINITY;
 		ArrayList<BattleNode> leastList = new ArrayList<BattleNode>();
-		if(junkPile.size()==0) {
-			visitedNodes.stream().forEach(e -> System.out.println("Visited: "+e.battleName));
-			System.out.println("No edges. Returning from "+ battleName);
+		if(organizedPile.size()==0) {
+			System.out.println("No unvisited edges. Returning from "+ battleName);
 			return null;
 		}
+		
 		// while the stack is not empty, compare the costs of the edges
-		while (junkPile.peek() != null) {
-			if(junkPile.size()==0) {
+		while (organizedPile.size() >= 0) {
+			if(organizedPile.size()==0) {
 				System.out.println("Have gone through all available paths.");
-				//went through all paths and all paths equal null?
-				return null;
+				break;
 			}
-			Edge currentEdge = junkPile.peek();
+			
+			Edge currentEdge = organizedPile.peek();
 			//might break here
 			visitedNodes.add(this);
-			if(visitedNodes.size()-2>0) {
-							System.out.println("Visited added "+this.battleName+ " from "+visitedNodes.get(visitedNodes.size()-2).battleName);
-
-			}
-			ArrayList<BattleNode> aListOfNodes = currentEdge.getNextNode(this).shortestPath(targetName, visitedNodes);
+			ArrayList<BattleNode> aListOfNodes = currentEdge.getNextNode().shortestPath(targetName, visitedNodes);
+			
 			if (aListOfNodes == null) {
-				System.out.println("Next path choice with "+ (junkPile.size()-1)+" remaining");
-				junkPile.pop();
+
+				organizedPile.pop();
 				break;
 			}
 			if (aListOfNodes != null) {
-System.out.println(aListOfNodes.size());
 				
 				// should compare the cost of the path for either default value (-infinity) or
 				// the current lowest cost path
 
-				double costOfPath = getCostOfPath(aListOfNodes);
-				if (costOfPath < leastPath) {
+			 double costOfPath = getCostOfPath(aListOfNodes);
+				if (costOfPath <= leastPath) {
 					leastPath = costOfPath;
 					leastList = aListOfNodes;
-					junkPile.pop();
-					break;
+					organizedPile.pop();					break;
 				}
 			}
 		}
+		
+		//Finished loop with least list finalized
 		if (leastList != null) {
-			//return or continue to check
 			return leastList;
 		}
 		
@@ -149,20 +140,18 @@ System.out.println(aListOfNodes.size());
 	
 	
 	public double getCostOfPath(ArrayList<BattleNode> pathList) {
-		pathList.add(this);
 		BattleNode currentNode;
 		BattleNode nextNode;
 		double cost = 0;
 		for (int i = pathList.size() - 1; i >= 0; i--) {
-			currentNode = pathList.get(i);
-			if ((i - 1 < 0) || pathList.get(i - 1).edges == null) {
+			currentNode = pathList.get(pathList.size()-1-i);
+			if ((pathList.size()-i >= pathList.size()) || pathList.get(pathList.size()-i).edges == null) {
 				return cost;
 			}
-			nextNode = pathList.get(i - 1);
+			nextNode = pathList.get(pathList.size()-i);
 			for (int j = 0; j < currentNode.edges.size(); j++) {
-				if (currentNode.edges.get(j).getNextNode(currentNode) == nextNode) {
+				if (currentNode.edges.get(j).getNextNode() == nextNode) {
 					cost += currentNode.edges.get(j).getCost();
-					break;
 				}
 			}
 		}
@@ -180,10 +169,10 @@ System.out.println(aListOfNodes.size());
 		g.drawRect(this.x, this.y, this.width, this.height);
 		if (this.edges != null) {
 			for (int i = 0; i < edges.size(); i++) {
-				g.drawLine(this.x, this.y, (int) edges.get(i).getNextNode(this).getX(),	(int) edges.get(i).getNextNode(this).getY());
-				if(edges.get(i).getNextNode(this).edges==null) {
-					g.drawString("Battle you have arrived at: "+edges.get(i).getNextNode(this).getName(), 10, 780);
-					g.drawString("Battle Description: "+edges.get(i).getNextNode(this).battleDescription, 10, 800);
+				g.drawLine(this.x, this.y, (int) edges.get(i).getNextNode().getX(),	(int) edges.get(i).getNextNode().getY());
+				if(edges.get(i).getNextNode().edges==null) {
+					g.drawString("Battle you have arrived at: "+edges.get(i).getNextNode().getName(), 10, 780);
+					g.drawString("Battle Description: "+edges.get(i).getNextNode().battleDescription, 10, 800);
 				}
 			}
 		}

@@ -105,7 +105,7 @@ public class GuiComponenet extends JComponent {
                            String list = "";
                            for (int r = shortestPath.size() - 1; r >= 0; r--) {
                                           int concatNum = 0;
-                                          if (this.i == 6) {
+                                          if (this.i == 7) {
                                                          concatNum = 4;
                                           } else {
                                                          concatNum = 10;

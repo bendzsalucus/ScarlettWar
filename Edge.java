@@ -13,7 +13,6 @@ public class Edge {
 		this.cost=cost;
 		this.connectionOne=endOne;
 		this.connectionTwo=endTwo;
-//		connectionOne.addEdge(this);
 	}
 	
 	public Edge(BattleNode nextNode, double cost) {
@@ -23,17 +22,10 @@ public class Edge {
 	
 	public void updateCost(int newCost) {
 		this.cost=newCost;
-//		connectionOne.addEdge(this, connectionTwo, newCost);
-//		connectionTwo.addEdge(this, connectionCne, newCost);
 	}
 	
-	public BattleNode getNextNode(BattleNode currentNode) {
-//		if(currentNode==this.connectionOne) {
-//			return connectionTwo;
-//		} else {
-//			return connectionOne;
-//		}
-	return connectionTwo;
+	public BattleNode getNextNode() {
+		return connectionTwo;
 	}
 		
 	public double getCost() {
