@@ -18,9 +18,11 @@ public class BattleNode extends GameObject {
 	public boolean isUnion;
 	public Color color;
 	public ArrayList<Edge> edges;
+	public int xOff;
+	public int yOff;
 
 	public BattleNode(double x, double y, double width, double height, String battleName, String description,
-			int soldierCount, String imgPath, boolean isUnion, Color color, ArrayList<Edge> edges) {
+			int soldierCount, String imgPath, boolean isUnion, Color color, ArrayList<Edge> edges, int xOff, int yOff) {
 		super(x, y, width, height);
 		this.battleName = battleName;
 		this.battleDescription = description;
@@ -31,6 +33,8 @@ public class BattleNode extends GameObject {
 		this.edges = edges;
 		this.x = (int) x;
 		this.y = (int) y;
+		this.xOff = xOff;
+		this.yOff = yOff;
 	}
 
 	public void addEdge(Edge edge, BattleNode node, double cost) {
