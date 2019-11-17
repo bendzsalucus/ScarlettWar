@@ -61,6 +61,7 @@ public class Scarlett {
 				frame.setVisible(false);
 
 				JFrame frame2 = new JFrame();
+
 				JButton nextB = new JButton("Go!");
 				JButton quitB = new JButton("Quit to Main Menu");
 				GuiComponenet component = new GuiComponenet(i);

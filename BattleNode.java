@@ -48,27 +48,39 @@ public class BattleNode extends GameObject {
 		edges.add(new Edge(this, node, cost));
 	}
 
-	public ArrayList<BattleNode> shortestPath(String targetName) {
+	public ArrayList<BattleNode> shortestPath(String targetName, ArrayList<BattleNode> visitedNodes) {
+//		edges.stream().forEach(e -> System.out.println(this.battleName+ " to "+e.connectionTwo.battleName));
+		
 		// checks if current node is desired destination
 		if (this.battleName.equals(targetName)) {
 			ArrayList<BattleNode> array = new ArrayList<BattleNode>();
 			array.add(this);
-			System.out.println("Target Node found. Returning an arrayList");
 			return array;
 		}
 
 		// creates stack of edges with least edge cost on the top
 		Stack<Edge> junkPile = new Stack<Edge>();
-		ArrayList<Edge> copyList = edges;
-		if (copyList == null) {
+		ArrayList<Edge> copyList = new ArrayList<>();
+		if (edges == null||edges.size()==0) {
 			System.out.println(battleName+" has no edges! It's also not the battle you are looking for...");
 			return null;
 		}
-		
+		for(int i=0;i<edges.size();i++) {
+			if(visitedNodes.size()==0) {
+				copyList.add(edges.get(i));
+				break;
+			}
+			if(!visitedNodes.contains(edges.get(i).connectionTwo)) {
+				copyList.add(edges.get(i));
+			}
+		}
 		while (copyList.size() != 0) {
+			
 			Edge mostCost = copyList.get(0);
+			
 			// compares mostCost to other costs in the copyList
 			for (int i = 0; i < copyList.size(); i++) {
+				
 				if (copyList.get(i).getCost() >= mostCost.getCost()) {
 					mostCost = copyList.get(i);
 				}
@@ -79,18 +91,26 @@ public class BattleNode extends GameObject {
 		// Assumptions at this point: junk has at least one edge, junk is orders with
 		// least at the top, and the target is not this node
 		// Creates a comparison number and reference
-				
-		System.out.println(battleName);
-		
+						
 		//Stuff above this should logically work...
-
+		
 		double leastPath = Double.POSITIVE_INFINITY;
-		ArrayList<BattleNode> leastList = null;
+		ArrayList<BattleNode> leastList = new ArrayList<BattleNode>();
+		if(junkPile.size()==0) {
+			System.out.println("No edges. Returning from "+ battleName);
+			return null;
+		}
 		// while the stack is not empty, compare the costs of the edges
 		while (junkPile.peek() != null) {
+			if(junkPile.size()==0) {
+				System.out.println("Have gone through all available paths.");
+				return null;
+			}
 			Edge currentEdge = junkPile.peek();
-			ArrayList<BattleNode> aListOfNodes = currentEdge.getNextNode(this).shortestPath(targetName);
+			visitedNodes.add(this);
+			ArrayList<BattleNode> aListOfNodes = currentEdge.getNextNode(this).shortestPath(targetName, visitedNodes);
 			if (aListOfNodes == null) {
+				System.out.println("Next path choice with "+ (junkPile.size()-1)+" remaining");
 				junkPile.pop();
 				break;
 			}
@@ -104,12 +124,11 @@ public class BattleNode extends GameObject {
 					leastPath = costOfPath;
 					leastList = aListOfNodes;
 					junkPile.pop();
-					break;// breaks while loop?
+					break;
 				}
 			}
 		}
 		if (leastList != null) {
-			leastList.add(this);
 			return leastList;
 		}
 		return null;

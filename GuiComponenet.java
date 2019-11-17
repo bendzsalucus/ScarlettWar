@@ -4,20 +4,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.RoundRectangle2D;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
-import javax.swing.JTextArea;
 
 /**
  * Where the magic GUI stuff happens
@@ -48,6 +39,7 @@ public class GuiComponenet extends JComponent {
 		// DO NOT TOUCH ABOVE
 		handleBackground(g);
 		handleBattles(g);
+
 		if (bat1 != null) {
 			printinfo(g);
 		}
@@ -88,12 +80,11 @@ public class GuiComponenet extends JComponent {
 				} else {
 					g.setColor(Color.WHITE);
 				}
-				if(i == 6) {
-				String temp = e.battleName.substring(9);
-				g.drawString(temp, (int) e.getX() - 20 + e.xOff, (int) e.getY() + 30 + e.yOff);
-				g.setColor(e.color);
-				}
-				else {
+				if (i == 6) {
+					String temp = e.battleName.substring(9);
+					g.drawString(temp, (int) e.getX() - 20 + e.xOff, (int) e.getY() + 30 + e.yOff);
+					g.setColor(e.color);
+				} else {
 					String temp = e.battleName.substring(4);
 					g.drawString(temp, (int) e.getX() - 20 + e.xOff, (int) e.getY() + 30 + e.yOff);
 					g.setColor(e.color);
@@ -107,11 +98,20 @@ public class GuiComponenet extends JComponent {
 			g.drawString("Select Two Avengers! ", 755, 780);
 		}
 		if (initalNode != null && targetNode != null) {
-			System.out.println(initalNode.battleName + " to " + targetNode.battleName);
-			ArrayList<BattleNode> shortestPath = initalNode.shortestPath(targetNode.battleName);
-			shortestPath.stream().forEach(e -> System.out.println(e.battleName));
-//			System.out.println(initalNode.shortestPath(targetNode.battleName).toString());
-//			g.drawString(initalNode.shortestPath(targetNode.battleName).toString(), 10,900);
+			ArrayList<BattleNode> shortestPath = initalNode.shortestPath(targetNode.battleName,
+					new ArrayList<BattleNode>());
+			if (shortestPath == null) {
+				System.out.println("There is no path to the specified location. Try a different route.");
+			}
+			if (shortestPath != null) {
+				String list = "";
+				for (int i = shortestPath.size() - 1; i >= 0; i--) {
+					list += shortestPath.get(i).battleName + ", ";
+				}
+				g.drawString(list, 10, 900);
+				shortestPath.stream().forEach(e -> System.out.println(e.battleName));
+				System.out.println(initalNode.getCostOfPath(shortestPath));
+			}
 		}
 
 //		g.drawString("Battles traveled through: "+battles.get(0).shortestPath("BattleofGettysburg"), 10, 850);
@@ -127,11 +127,11 @@ public class GuiComponenet extends JComponent {
 	public void insertInput(String input, int textBox) {
 		if (textBox == 1) {
 			initalNode = searchFor(input);
-
 		}
 		if (textBox == 2) {
 			targetNode = searchFor(input);
-		} else if (targetNode == null || initalNode == null) {
+		}
+		if ((targetNode == null && textBox == 2) || (initalNode == null && textBox == 1)) {
 			System.out.println("Battle(s) not found in system.");
 		}
 	}
@@ -150,7 +150,6 @@ public class GuiComponenet extends JComponent {
 		importer = new NodeImporter(i);
 		battles = importer.getBattles();
 		return importer.getBattles();
-
 	}
 
 	private void handleBackground(Graphics g) {
