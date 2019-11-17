@@ -18,7 +18,7 @@ import javax.swing.JComponent;
  */
 public class GuiComponenet extends JComponent {
 	private NodeImporter importer;
-	private ArrayList<BattleNode> battles;
+	public ArrayList<BattleNode> battles;
 	private BattleNode initalNode;
 	private BattleNode targetNode;
 	private BattleNode bat1;
@@ -95,6 +95,7 @@ public class GuiComponenet extends JComponent {
 		if (i == 7) {
 			g.drawString("Select Two Avengers! ", 755, 780);
 		}
+
         if (initalNode != null && targetNode != null) {
             ArrayList<BattleNode> shortestPath = initalNode.shortestPath(targetNode.battleName,
                                           new ArrayList<BattleNode>());
@@ -121,7 +122,7 @@ public class GuiComponenet extends JComponent {
                            System.out.println(initalNode.getCostOfPath(shortestPath));
             }
 		return;
-		}
+
 
 //		g.drawString("Battles traveled through: "+battles.get(0).shortestPath("BattleofGettysburg"), 10, 850);
 		// this will be in a new method called by the fact the 2 text boxes are not null
