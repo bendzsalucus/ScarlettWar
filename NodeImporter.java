@@ -31,6 +31,8 @@ public class NodeImporter {
 	private Color color;
 	private ArrayList<BattleNode> battles;
 	private ArrayList<Edge> edges;
+	private int xOff;
+	private int yOff;
 
 	public NodeImporter(int mapNummy) {
 //		System.out.println(mapNummy);
@@ -75,14 +77,18 @@ public class NodeImporter {
 				width = scanner.nextInt();
 				height = scanner.nextInt();
 			}
+			if (currentLine.equals("textOffset")) {
+				xOff = scanner.nextInt();
+				yOff = scanner.nextInt();
+			}
 			if (currentLine.equals("side")) {
 				int temp = scanner.nextInt();
 				if (temp == 1) {
 					isUnion = false;
-					color = Color.BLUE;
+					color = Color.RED;
 				} else {
 					isUnion = true;
-					color = Color.RED;
+					color = Color.BLUE;
 				}
 			}
 			if (currentLine.equals("imgpath")) {
@@ -120,7 +126,7 @@ public class NodeImporter {
 
 	private void makeNewBattle() {
 		BattleNode temp = new BattleNode(x, y, width, height, nameofBattle, battleDescription, soldierInTown, imgPath,
-				isUnion, color, edges);
+				isUnion, color, edges, xOff, yOff);
 		battles.add(temp);
 
 	}

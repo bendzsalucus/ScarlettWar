@@ -14,13 +14,13 @@ import java.net.URL;
 
 public class MusicThread {
 
-	public void play() {
+	public void play(String path) {
 		new Thread() {
 			private Player player;
 
 			public void run() {
 				try {
-					FileInputStream fileInputStream = new FileInputStream("Resoruces\\Dixie.mp3");
+					FileInputStream fileInputStream = new FileInputStream(path);
 					player = new Player(fileInputStream);
 					player.play();
 					return;
