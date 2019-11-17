@@ -79,9 +79,7 @@ public class Scarlett {
 
 				class NextListner implements ActionListener {
 					public void actionPerformed(ActionEvent e) {
-						component.battles.stream().forEach(r -> {
-							System.out.println(r.battleName);
-						});
+						
 						String battle1 = (String) cb1.getSelectedItem();
 						String battle2 = (String) cb2.getSelectedItem();
 						// . . 
