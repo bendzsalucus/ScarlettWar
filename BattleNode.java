@@ -112,6 +112,10 @@ public class BattleNode extends GameObject {
 			Edge currentEdge = junkPile.peek();
 			//might break here
 			visitedNodes.add(this);
+			if(visitedNodes.size()-2>0) {
+							System.out.println("Visited added "+this.battleName+ " from "+visitedNodes.get(visitedNodes.size()-2).battleName);
+
+			}
 			ArrayList<BattleNode> aListOfNodes = currentEdge.getNextNode(this).shortestPath(targetName, visitedNodes);
 			if (aListOfNodes == null) {
 				System.out.println("Next path choice with "+ (junkPile.size()-1)+" remaining");

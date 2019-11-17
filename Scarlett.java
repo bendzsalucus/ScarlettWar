@@ -1,27 +1,14 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.concurrent.Future;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  * This is what handles the Main Menu Frame. This handles the buttons for the
@@ -92,8 +79,19 @@ public class Scarlett {
 
 				class NextListner implements ActionListener {
 					public void actionPerformed(ActionEvent e) {
+						
 						String battle1 = (String) cb1.getSelectedItem();
 						String battle2 = (String) cb2.getSelectedItem();
+						// . . 
+					    StringBuilder sb = new StringBuilder(battle1);
+					    sb.insert(0, ". . ");
+					    battle1 = sb.toString();
+					    StringBuilder sb2 = new StringBuilder(battle2);
+					    sb2.insert(0, ". . ");
+					    battle2 = sb2.toString();
+						
+					    System.out.println(battle1 + "  " + battle2);
+						
 						BattleNode bat1 = component.searchFor(battle1);
 						int lenny1 = bat1.battleDescription.length();
 						String cat1 = "";
