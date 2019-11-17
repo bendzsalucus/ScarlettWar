@@ -74,12 +74,12 @@ public class CivilStarter {
 				String[] choices = { "Battle of FortSumter", "Battle of BullRun", "Battle of Antietam",
 						"Battle of Chancellorsville", "Battle of Gettysburg", "Battle of Atlanta", "Battle of Shiloh",
 						"Battle of OakHills", "Battle of FortsJackson", "Battle of SiegeofCorinth",
-						"Battle of SiegeofCorinth", "Battle of Wilderness", "Battle of Chickamauga" };
+						"Battle of Winchester", "Battle of Wilderness", "Battle of Chickamauga" };
 				
 				String[] choices2 = { "Battle of Atlanta", "Battle of BullRun", "Battle of Antietam",
 						"Battle of Chancellorsville", "Battle of Gettysburg", "Battle of FortSumter", "Battle of Shiloh",
 						"Battle of OakHills", "Battle of FortsJackson", "Battle of SiegeofCorinth",
-						"Battle of SiegeofCorinth", "Battle of Wilderness", "Battle of Chickamauga" };
+						"Battle of Winchester", "Battle of Wilderness", "Battle of Chickamauga" };
 
 
 				final JComboBox<String> cb1 = new JComboBox<String>(choices);

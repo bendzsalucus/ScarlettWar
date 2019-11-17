@@ -11,3 +11,17 @@
  BattleofWinchester -10
  BattleofWilderness -11
  BattleofChickamauga -12
+
+Black_Widow -0
+Hulk -1
+Iron_Man -2 
+Black_Panther -3
+Groot -4 
+Rocket -5
+Gamora -6
+Hawkeye -7
+Thor -8
+Captain_America -9
+Spider_Man -10
+
+

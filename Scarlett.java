@@ -71,15 +71,11 @@ public class Scarlett {
 				frame2.add(quitB);
 				quitB.setBounds(0, 920, 140, 50);
 
-				String[] choices = { "Battle of FortSumter", "Battle of BullRun", "Battle of Antietam",
-						"Battle of Chancellorsville", "Battle of Gettysburg", "Battle of Atlanta", "Battle of Shiloh",
-						"Battle of OakHills", "Battle of FortsJackson", "Battle of SiegeofCorinth",
-						"Battle of SiegeofCorinth", "Battle of Wilderness", "Battle of Chickamauga" };
+				String[] choices = { "Black_Widow", "Hulk", "Iron_Man", "Black_Panther", "Groot", "Rocket", "Gamora",
+						"Hawkeye", "Thor", "Captain_America", "Spider_Man", };
 
-				String[] choices2 = { "Battle of Atlanta", "Battle of BullRun", "Battle of Antietam",
-						"Battle of Chancellorsville", "Battle of Gettysburg", "Battle of FortSumter",
-						"Battle of Shiloh", "Battle of OakHills", "Battle of FortsJackson", "Battle of SiegeofCorinth",
-						"Battle of SiegeofCorinth", "Battle of Wilderness", "Battle of Chickamauga" };
+				String[] choices2 = { "Hulk", "Black_Widow", "Iron_Man", "Black_Panther", "Groot", "Rocket", "Gamora",
+						"Hawkeye", "Thor", "Captain_America", "Spider_Man", };
 
 				final JComboBox<String> cb1 = new JComboBox<String>(choices);
 				final JComboBox<String> cb2 = new JComboBox<String>(choices2);
