@@ -71,13 +71,13 @@ public class CivilStarter {
 				frame2.add(quitB);
 				quitB.setBounds(0, 920, 140, 50);
 
-				String[] choices = { "Battle of FortSumter", "Battle of BullRun", "Battle of Antietam",
+				String[] choices = { "Battle of FortsJackson", "Battle of BullRun", "Battle of Antietam",
 						"Battle of Chancellorsville", "Battle of Gettysburg", "Battle of Atlanta", "Battle of Shiloh",
-						"Battle of OakHills", "Battle of FortsJackson", "Battle of SiegeofCorinth",
+						"Battle of OakHills","Battle of FortSumter", "Battle of SiegeofCorinth",
 						"Battle of Winchester", "Battle of Wilderness", "Battle of Chickamauga" };
 				
-				String[] choices2 = { "Battle of Atlanta", "Battle of BullRun", "Battle of Antietam",
-						"Battle of Chancellorsville", "Battle of Gettysburg", "Battle of FortSumter", "Battle of Shiloh",
+				String[] choices2 = { "Battle of Gettysburg", "Battle of BullRun", "Battle of Antietam",
+						"Battle of Chancellorsville", "Battle of Atlanta", "Battle of FortSumter", "Battle of Shiloh",
 						"Battle of OakHills", "Battle of FortsJackson", "Battle of SiegeofCorinth",
 						"Battle of Winchester", "Battle of Wilderness", "Battle of Chickamauga" };
 

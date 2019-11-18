@@ -1,4 +1,5 @@
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -104,7 +105,7 @@ public class GuiComponenet extends JComponent {
             }
             if (shortestPath != null) {
                            String list = "";
-                           for (int r = shortestPath.size() - 1; r >= 0; r--) {
+                           for (int r = 0; r > shortestPath.size(); r++) {
                                           int concatNum = 0;
                                           if (this.i == 7) {
                                                          concatNum = 4;
@@ -112,17 +113,19 @@ public class GuiComponenet extends JComponent {
                                                          concatNum = 10;
 
                                           }
+                                          if(shortestPath.size()!=0) {
                                           String tempCat = shortestPath.get(r).battleName;
                                           tempCat = tempCat.substring(concatNum);
-                                          list += tempCat + ", ";
+                                          list += tempCat + ", ";}
                            }
                            g.setFont(new Font("Arial", Font.BOLD, 17));
                            g.drawString(list, 10, 900);
+                           drawLines(shortestPath, g);
                            shortestPath.stream().forEach(e -> System.out.println(e.battleName));
                            System.out.println(initalNode.getCostOfPath(shortestPath));
             }
 		return;
-
+        }
 
 //		g.drawString("Battles traveled through: "+battles.get(0).shortestPath("BattleofGettysburg"), 10, 850);
 		// this will be in a new method called by the fact the 2 text boxes are not null
@@ -134,10 +137,13 @@ public class GuiComponenet extends JComponent {
 		for(int i=0;i<path.size()-1;i++) {
 			BattleNode currentNode=path.get(i);
 			BattleNode nextNode=path.get(i+1);
-			lineToDraw.add(new Line2D.Double(currentNode.getX(), currentNode.getY(), nextNode.getX(), nextNode.getY()));
+			Line2D.Double newLine=new Line2D.Double(currentNode.getX(), currentNode.getY(), nextNode.getX(), nextNode.getY());
+			
+			lineToDraw.add(newLine);
 		//add thickness factor.
 		}
 		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(5));
 		lineToDraw.stream().forEach(e -> g2.draw(e));
 	}
 	
